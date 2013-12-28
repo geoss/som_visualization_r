@@ -1,7 +1,6 @@
 ##CODE FOR BRUNDSON AND SINGLETON BOOK CHAPTER.
 
 ##LIBRARIES
-library(ggplot2)
 library(kohonen)
 
 ##Code for Plots
@@ -41,11 +40,3 @@ image.plot(legend.only=TRUE, col=rev(designer.colors(n=50, col=brewer.pal(9, "Sp
 dev.off()
 plotUmat(aSom)
 
-##Plot BMUs for specific geographies.
-NYbmu <- na.omit(aSom$unit.classif[substr(usa.bg.som$BGID, start=1, stop=5) == 36081]) #QUEENS NY
-IAbmu <- na.omit(aSom$unit.classif[substr(usa.bg.som$BGID, start=1, stop=5) == 19009]) #AUDUBON CONTY IOWA
-
-dev.off()
-geog_hexa_map(NYbmu, aSom=aSom, title="Queens County, New York City")
-dev.off()
-geog_hexa_map(IAbmu, aSom=aSom, title="Audubon County, Iowa")
