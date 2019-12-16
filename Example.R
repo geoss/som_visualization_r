@@ -26,7 +26,7 @@ aSom <- som(data=as.matrix(scale(na.omit(usa.bg.som[,1:7]))), grid=aGrid, rlen=1
 dev.off()
 par(mar = rep(1, 4))
 cplanelay <- layout(matrix(1:8, nrow=4))
-vars <- colnames(aSom$data)
+vars <- colnames(aSom$data[[1]])
 for(p in vars) {
   plotCplane(som_obj=aSom, variable=p, legend=FALSE, type="Quantile")
 }
