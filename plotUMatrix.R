@@ -25,7 +25,7 @@ plotUmat <- function(som_obj, type="Equal Interval"){
   #CALCULATE U-MATRIX
   
   #Delaunay Triangulation to form network of neurons 
-  d <- deldir(x=som_obj$grid$pts[,1], y=aSom$grid$pts[,2])
+  d <- deldir(x=som_obj$grid$pts[,1], y=som_obj$grid$pts[,2])
   
   #Build network
   n <- network(x=unique(d$delsgs[,5:6]), directed=FALSE, matrix.type="edgelist")
@@ -34,7 +34,7 @@ plotUmat <- function(som_obj, type="Equal Interval"){
   neigh.dists <- NA
   for(vert in network.vertex.names(n)){
     neighs <- get.neighborhood(x=n, v=vert)
-    neigh.dists[vert] <- (sum(dist(aSom$codes[c(vert, neighs),][,1]))/length(neighs))
+    neigh.dists[vert] <- (sum(dist(som_obj$codes[[1]][c(vert, neighs),][,1]))/length(neighs))
   }
   
   
