@@ -17,9 +17,9 @@ library(RColorBrewer) #to use brewer.pal
 library(fields) #to use designer.colors
 
 ##PLOTTING FUNCTION
-plotCplane <- function(som_obj, variable=sample(colnames(som_obj$data), 1), type="Quantile", legend=FALSE){
+plotCplane <- function(som_obj, variable=sample(colnames(som_obj$data[[1]]), 1), type="Quantile", legend=FALSE){
   if (is.numeric(variable)){
-    variable <- colnames(som_obj$data)[variable]
+    variable <- colnames(som_obj$data[[1]])[variable]
   }
   
   if (som_obj$grid$topo != "hexagonal"){
@@ -44,7 +44,7 @@ plotCplane <- function(som_obj, variable=sample(colnames(som_obj$data), 1), type
             col = col, border=border)
   }
   
-  hm <- component_plane_matrix(data=som_obj$codes, variable_index_or_name=variable)
+  hm <- component_plane_matrix(data=som_obj$codes[[1]], variable_index_or_name=variable)
   
   plot(0, 0, type = "n", axes = FALSE, xlim=c(0, som_obj$grid$xdim), 
        ylim=c(0, som_obj$grid$ydim), xlab="", ylab= "", asp=1, main=substr(variable, 1, 10))
@@ -60,7 +60,7 @@ plotCplane <- function(som_obj, variable=sample(colnames(som_obj$data), 1), type
   
   if(type == "Quantile") {
     #Quantile colorbins
-    Bins <- quantile(x=som_obj$codes, probs=cumsum(rep(1/length(ColRamp), length(ColRamp))))
+    Bins <- quantile(x=som_obj$codes[[1]], probs=cumsum(rep(1/length(ColRamp), length(ColRamp))))
   }
   
   
