@@ -9,7 +9,7 @@
 library(RColorBrewer) #to use brewer.pal
 library(fields) #to use designer.colors
 
-add.cluster.boundaries2 <- function(som, cluster){
+add.cluster.boundaries <- function(som, cluster){
     if (som$grid$toroidal==TRUE){
         stop("function assumes that SOM is not toroidal")
     }
