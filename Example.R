@@ -5,7 +5,7 @@ library(kohonen)
 
 ##Code for Plots
 source("somComponentPlanePlottingFunction.R")
-source("Map_COUNTY_BMU.R")
+#source("Map_COUNTY_BMU.R")
 source("plotUMatrix.R")
 
 
@@ -19,7 +19,8 @@ aGrid <- somgrid(xdim = 160, ydim = 100, topo="hexagonal")
 
 ##NEXT LINE IS SLOW!!!
 ##Rlen is arbitrarily low
-aSom <- som(data=as.matrix(scale(na.omit(usa.bg.som[,1:7]))), grid=aGrid, rlen=1, alpha=c(0.05, 0.01), keep.data=FALSE)
+data <- as.matrix(scale(na.omit(usa.bg.som[,1:7])))
+aSom <- som(data=data, grid=aGrid, rlen=1, alpha=c(0.05, 0.01), keep.data=FALSE)
 
 ##VISUALIZE RESULTS
 ##COMPONENT PLANES
